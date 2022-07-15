@@ -14,14 +14,12 @@ public class RestaurantController {
 
     private final RestaurantService restaurantService;
 
-    @PostMapping("/api/restaurants")
-    public Restaurant registerRestaurant(@RequestBody RestaurantRequestDto requestDto) {
-        return restaurantService.registerRestaurant(requestDto);
-    }
-
-    @GetMapping("/api/restaurants")
+    @GetMapping("/restaurants")
     public List<Restaurant> getRestaurantList() {
         return restaurantService.getRestaurants();
     }
-
+    @PostMapping("/restaurants/register")
+    public Restaurant registerRestaurant(@RequestBody RestaurantRequestDto requestDto) {
+        return restaurantService.registerRestaurant(requestDto);
+    }
 }

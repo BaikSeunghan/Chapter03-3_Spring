@@ -7,10 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.Getter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Setter
 @Getter // get 함수를 일괄적으로 만들어줍니다.
@@ -21,13 +19,18 @@ public class Restaurant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "restaurant_id")
     private Long id;
 
+    @Column(nullable = false)
     private String name;
-
+    @Column(nullable = false)
     private int minOrderPrice;
-
+    @Column(nullable = false)
     private int deliveryFee;
+
+    @OneToMany
+    private List<Food> foods;
 
     // 음식점 등록 시 이용합니다.
     public Restaurant(RestaurantRequestDto requestDto) {
@@ -38,7 +41,6 @@ public class Restaurant {
         this.name = requestDto.getName();
         this.minOrderPrice = requestDto.getMinOrderPrice();
         this.deliveryFee = requestDto.getDeliveryFee();
+
     }
-
-
 }

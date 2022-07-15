@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -19,6 +20,10 @@ public class RestaurantService {
     }
 
     public Restaurant registerRestaurant(RestaurantRequestDto requestDto) {
+        Optional<Restaurant> found = restaurantRepository.findByName(requestDto.getName());
+        if (found.isPresent()) {
+            throw new IllegalArgumentException("이미 등록됨 음식점입니다.");
+        }
         Restaurant restaurant = new Restaurant(requestDto);
         return restaurantRepository.save(restaurant);
     }
