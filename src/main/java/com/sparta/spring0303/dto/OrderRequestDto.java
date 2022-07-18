@@ -5,12 +5,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class FoodRequestDto {
+public class OrderRequestDto {
 
-    private String foodName;
-    private int price;
+    // request
+    private Long restaurantId;
+    private List<OrderFoodDto> orderFoodDtoList;
 }

@@ -9,8 +9,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class FoodRequestDto {
+public class OrderFoodDto {
+    // Request foods
+    // 주문 장바구니 역할
+    // 음식 주문 정보 받아오기
+    private Long foodId;
+    private int quantity;
 
-    private String foodName;
-    private int price;
+
 }

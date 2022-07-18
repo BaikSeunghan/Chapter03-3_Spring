@@ -16,6 +16,7 @@ import javax.persistence.*;
 @Entity // DB 테이블 역할을 합니다.
 public class Food {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
