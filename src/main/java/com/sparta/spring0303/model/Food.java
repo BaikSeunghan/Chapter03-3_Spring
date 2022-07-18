@@ -22,7 +22,7 @@ public class Food {
     private Long id;
 
     @Column(nullable = false)
-    private String foodName;
+    private String name;
 
     @Column(nullable = false)
     private int price;
@@ -32,13 +32,13 @@ public class Food {
     private Restaurant restaurant;  // Has-a 관계
 
     // 음식점 등록 시 이용합니다.
-    public Food(FoodRequestDto requestDto, Restaurant restaurant) {
+    public Food(String name, int price, Restaurant restaurant) {
 
-        // 입력값 Validation
-        FoodValidator.validateFoodInput(requestDto, restaurant);
+        // 가격 설정값 Validation
+        FoodValidator.validateFoodInput(price);
 
-        this.foodName = requestDto.getFoodName();
-        this.price = requestDto.getPrice();
+        this.name = name;
+        this.price = price;
         this.restaurant = restaurant;
     }
 

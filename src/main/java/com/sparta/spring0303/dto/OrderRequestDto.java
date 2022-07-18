@@ -15,5 +15,5 @@ public class OrderRequestDto {
 
     // request
     private Long restaurantId;
-    private List<OrderFoodDto> orderFoodDtoList;
+    private List<OrderFoodDto> foods;
 }

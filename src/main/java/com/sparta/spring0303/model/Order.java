@@ -25,7 +25,7 @@ public class Order {
     private String restaurantName;
 
     @OneToMany()
-    private List<OrderFood> orderFoods = new ArrayList<>();
+    private List<OrderFood> foods = new ArrayList<>();
 
     @Column(nullable = false)
     private int deliveryFee;
@@ -36,7 +36,7 @@ public class Order {
 
     public Order(String restaurantName, List<OrderFood> orderFoods, int deliveryFee, int totalPrice) {
         this.restaurantName = restaurantName;
-        this.orderFoods = orderFoods;
+        this.foods = orderFoods;
         this.deliveryFee = deliveryFee;
         this.totalPrice = totalPrice;
     }

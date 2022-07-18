@@ -22,7 +22,7 @@ public class OrderFood {
     private Long id;
 
     @Column(nullable = false)
-    private String foodName;
+    private String name;
 
     @Column(nullable = false)
     private int quantity;
@@ -35,7 +35,7 @@ public class OrderFood {
 //    private Order order;
 
     public OrderFood(String foodName, int quantity, int price) {
-        this.foodName = foodName;
+        this.name = foodName;
         this.quantity = quantity;
         this.price = price;
     }

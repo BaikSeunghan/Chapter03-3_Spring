@@ -9,6 +9,7 @@ import lombok.Setter;
 import lombok.Getter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Setter
@@ -31,7 +32,7 @@ public class Restaurant {
     private int deliveryFee;
 
     @OneToMany
-    private List<Food> foods;
+    private List<Food> foods = new ArrayList<>();
 
 
     // 음식점 등록 시 이용합니다.

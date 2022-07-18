@@ -34,8 +34,9 @@ public class OrderService {
     }
 
     private Order getOrder(OrderRequestDto requestDto) {
+
         Long restaurantId = requestDto.getRestaurantId();
-        // 이걸로 찾고 name이랑 배달비 얻어온다.
+        // 이걸로 Restaurant 찾고 name / 배달비 얻어온다.
         Restaurant restaurant = restaurantRepository.findById(restaurantId)
                 .orElseThrow(() -> new NullPointerException("존재하지 않는 음식점입니다"));
 
@@ -48,14 +49,14 @@ public class OrderService {
         // 총액 선언
         int totalPrice = 0;
 
-        List<OrderFoodDto> orderFoodDtoList = requestDto.getOrderFoodDtoList();
+        List<OrderFoodDto> orderFoodDtoList = requestDto.getFoods();
         for (OrderFoodDto orderFoodDto : orderFoodDtoList) {
             // 이걸로 Food 객체 찾아와서 가격 가져온다음 갯수랑 곱해서 총 가격을 정한다.
-            Long foodId = orderFoodDto.getFoodId();
+            Long foodId = orderFoodDto.getId();
             Food food = foodRepository.findById(foodId)
                     .orElseThrow(() -> new NullPointerException("존재하지 않는 음식입니다"));
 
-            String foodName = food.getFoodName();
+            String foodName = food.getName();
             int quantity = orderFoodDto.getQuantity();
             if (quantity < 1 || quantity > 100) {
                 throw new IllegalArgumentException("1개 이상 주문해주세요");
@@ -73,7 +74,6 @@ public class OrderService {
         }
 
         Order order = new Order(restaurantName, orderFoods, deliveryFee, totalPrice);
-        orderRepository.save(order);
-        return order;
+        return orderRepository.save(order);
     }
 }
