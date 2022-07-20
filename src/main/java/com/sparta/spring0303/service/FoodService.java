@@ -1,6 +1,5 @@
 package com.sparta.spring0303.service;
 
-import com.sparta.spring0303.dto.FoodDetailDto;
 import com.sparta.spring0303.dto.FoodRequestDto;
 import com.sparta.spring0303.model.Food;
 import com.sparta.spring0303.model.Restaurant;
@@ -23,22 +22,18 @@ public class FoodService {
         return foodRepository.findAll();
     }
 
-
     @Transactional
-    public void registerFood(FoodRequestDto requestDto, Long restaurantId) {
+    public void registerFood(List<FoodRequestDto> requestDtoList, Long restaurantId) {
 
         // 음식점 유무 검사
         Restaurant restaurant = restaurantRepository.findById(restaurantId)
                 .orElseThrow(() -> new NullPointerException("존재하지 않는 음식점입니다"));
 
-        List<FoodDetailDto> foodDetailDtoList = requestDto.getFoodDetailDtoList();
-
-        for (FoodDetailDto foodDetailDto : foodDetailDtoList) {
-            String name = foodDetailDto.getName();
-            int price = foodDetailDto.getPrice();
+        for (FoodRequestDto requestDto  : requestDtoList) {
+            String name = requestDto.getName();
+            int price = requestDto.getPrice();
 
             // 같은 음식점 내에서는 음식 이름이 중복될 수 없음
-            // -->  리팩토링 FoodValidator에 들어가야하는걸까?
             validateDuplicatedFood(name, restaurantId);
 
             // 없으면 음식 등록
@@ -61,6 +56,12 @@ public class FoodService {
 
     // 음식점이 등록한 모든 음식 조회
     public List<Food> getMenu(Long restaurantId) {
-        return foodRepository.findAllByRestaurantId(restaurantId);
+//        return foodRepository.findAllByRestaurantId(restaurantId);
+
+        // 음식점 유무 검사
+        Restaurant restaurant = restaurantRepository.findById(restaurantId)
+                .orElseThrow(() -> new NullPointerException("존재하지 않는 음식점입니다"));
+
+        return foodRepository.findAllByRestaurant(restaurant);
     }
 }

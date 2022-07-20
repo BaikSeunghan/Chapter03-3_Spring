@@ -1,11 +1,9 @@
 package com.sparta.spring0303.model;
 
-import com.sparta.spring0303.dto.FoodRequestDto;
 import com.sparta.spring0303.validator.FoodValidator;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 

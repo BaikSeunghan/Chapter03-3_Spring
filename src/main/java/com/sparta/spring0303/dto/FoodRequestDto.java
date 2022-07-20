@@ -9,5 +9,7 @@ import java.util.List;
 @NoArgsConstructor
 public class FoodRequestDto {
 
-    private List<FoodDetailDto> foodDetailDtoList;
+    private String name;
+    private int price;
+
 }

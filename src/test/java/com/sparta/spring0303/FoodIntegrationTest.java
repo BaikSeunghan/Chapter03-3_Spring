@@ -116,7 +116,7 @@ class FoodIntegrationTest {
                     request,
                     Object.class);
 
-            // then
+            // then 여기 왜 빨간줄이져?
             assertEquals(HttpStatus.OK, response.getStatusCode());
             assertNull(response.getBody());
         }
