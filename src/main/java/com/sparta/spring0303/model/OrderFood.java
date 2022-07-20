@@ -29,7 +29,7 @@ public class OrderFood {
     @Column(nullable = false)
     private int price;
 
-//    @ManyToOne --> 맞는듯
+//    @ManyToOne
 //    @JoinColumn(name = "order_id")
 //    private Order order;
 

@@ -30,7 +30,7 @@ public class Restaurant {
     @Column(nullable = false)
     private int deliveryFee;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Food> foods = new ArrayList<>();
 
 

@@ -69,13 +69,12 @@ public class OrderService {
             if (totalPrice < restaurant.getMinOrderPrice()) {
                 throw new IllegalArgumentException("최소 주문 가격 이하입니다.");
             }
-
             // OrderFood 만들기
             OrderFood orderFood = new OrderFood(foodName, quantity, price);
 
             orderFoods.add(orderFood);
         }
-
+        totalPrice += deliveryFee;
         Order order = new Order(restaurantName, orderFoods, deliveryFee, totalPrice);
         return orderRepository.save(order);
     }

@@ -23,7 +23,7 @@ public class Order {
     @Column(nullable = false)
     private String restaurantName;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<OrderFood> foods = new ArrayList<>();
 
     @Column(nullable = false)
