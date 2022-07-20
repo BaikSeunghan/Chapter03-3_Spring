@@ -12,7 +12,6 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Setter
 @Getter // get 함수를 일괄적으로 만들어줍니다.
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,7 +19,7 @@ import java.util.List;
 public class Restaurant {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue // 각 DB에 맞는 걸 자동으로 맞춰서 증가
     @Column(name = "restaurant_id")
     private Long id;
 

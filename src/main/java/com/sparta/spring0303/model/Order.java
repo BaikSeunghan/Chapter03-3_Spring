@@ -9,7 +9,6 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Setter
 @Getter // get 함수를 일괄적으로 만들어줍니다.
 @NoArgsConstructor // 기본 생성자를 만들어줍니다.
 @AllArgsConstructor
@@ -17,14 +16,14 @@ import java.util.List;
 public class Order {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     @Column(name = "order_id")
     private Long id;
 
     @Column(nullable = false)
     private String restaurantName;
 
-    @OneToMany()
+    @OneToMany
     private List<OrderFood> foods = new ArrayList<>();
 
     @Column(nullable = false)

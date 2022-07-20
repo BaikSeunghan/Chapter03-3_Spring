@@ -7,7 +7,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Setter
 @Getter // get 함수를 일괄적으로 만들어줍니다.
 @NoArgsConstructor // 기본 생성자를 만들어줍니다.
 @AllArgsConstructor
@@ -18,7 +17,7 @@ import javax.persistence.*;
 public class OrderFood {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private Long id;
 
     @Column(nullable = false)
@@ -30,7 +29,7 @@ public class OrderFood {
     @Column(nullable = false)
     private int price;
 
-//    @ManyToOne
+//    @ManyToOne --> 맞는듯
 //    @JoinColumn(name = "order_id")
 //    private Order order;
 

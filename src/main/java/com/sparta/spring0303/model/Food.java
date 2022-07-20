@@ -9,16 +9,14 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Setter
 @Getter // get 함수를 일괄적으로 만들어줍니다.
 @NoArgsConstructor // 기본 생성자를 만들어줍니다.
 @AllArgsConstructor
 @Entity // DB 테이블 역할을 합니다.
 public class Food {
 
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private Long id;
 
     @Column(nullable = false)
@@ -27,7 +25,7 @@ public class Food {
     @Column(nullable = false)
     private int price;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id", nullable = false)
     private Restaurant restaurant;  // Has-a 관계
 

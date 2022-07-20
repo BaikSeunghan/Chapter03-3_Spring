@@ -56,11 +56,14 @@ public class OrderService {
             Food food = foodRepository.findById(foodId)
                     .orElseThrow(() -> new NullPointerException("존재하지 않는 음식입니다"));
 
+            // 음식 이름
             String foodName = food.getName();
+            // 주문 개수
             int quantity = orderFoodDto.getQuantity();
             if (quantity < 1 || quantity > 100) {
                 throw new IllegalArgumentException("1개 이상 주문해주세요");
             }
+            // 음식 가격
             int price = food.getPrice() * quantity;
             totalPrice += price;
             if (totalPrice < restaurant.getMinOrderPrice()) {

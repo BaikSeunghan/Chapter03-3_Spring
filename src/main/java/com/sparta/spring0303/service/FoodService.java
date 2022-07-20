@@ -50,7 +50,7 @@ public class FoodService {
     // 중복 음식 검사
     private void validateDuplicatedFood(String name, Long restaurantId) {
 
-        List<Food> foodList = getFoodList(restaurantId);
+        List<Food> foodList = getMenu(restaurantId);
 
         for (Food food : foodList) {
             if (food.getName().equals(name)) {
@@ -60,7 +60,7 @@ public class FoodService {
     }
 
     // 음식점이 등록한 모든 음식 조회
-    public List<Food> getFoodList(Long restaurantId) {
+    public List<Food> getMenu(Long restaurantId) {
         return foodRepository.findAllByRestaurantId(restaurantId);
     }
 }

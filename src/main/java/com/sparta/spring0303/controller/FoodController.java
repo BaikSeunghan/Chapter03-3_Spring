@@ -25,7 +25,7 @@ public class FoodController {
 //    @GetMapping("/api/foods/{id}")
     @GetMapping("/restaurant/{restaurantId}/foods")
     public List<Food> getFoodList(@PathVariable Long restaurantId) {
-        return foodService.getFoodList(restaurantId);
+        return foodService.getMenu(restaurantId);
     }
 
 }
