@@ -29,9 +29,8 @@ public class OrderFood {
     @Column(nullable = false)
     private int price;
 
-//    @ManyToOne
-//    @JoinColumn(name = "order_id")
-//    private Order order;
+//    @ManyToOne()
+//    private Order order;  // order필드를 안해줘도 테이블에 order_id 칼럼이 있다.
 
     public OrderFood(String foodName, int quantity, int price) {
         this.name = foodName;

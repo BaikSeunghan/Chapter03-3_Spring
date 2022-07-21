@@ -1,9 +1,9 @@
 package com.sparta.spring0303.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -23,7 +23,10 @@ public class Order {
     @Column(nullable = false)
     private String restaurantName;
 
+//    @OneToMany(mappedBy = "order")
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "order_id")  // 이거 때문에 OrderFood 테이블에 order_id 칼럼이 있음!!!!
+    // 근데 뭔가 OrderFood 에서 조인칼럼을 해도될듯한 생각이 든다.
     private List<OrderFood> foods = new ArrayList<>();
 
     @Column(nullable = false)

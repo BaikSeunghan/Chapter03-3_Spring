@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sparta.spring0303.dto.RestaurantRequestDto;
 import com.sparta.spring0303.validator.RestaurantValidator;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -30,8 +29,11 @@ public class Restaurant {
     @Column(nullable = false)
     private int deliveryFee;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Food> foods = new ArrayList<>();
+//    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
+//    @JsonIgnore
+//    private List<Food> foods = new ArrayList<>();
+    // 주석처리하긴했는데,, 설마 레스토랑 메뉴를 가져올때 getFoods로 하면되는걸까?
+    // 지금은 Food에서 restaurantId받고 Restaurant찾아서 하고있음.
 
 
     // 음식점 등록 시 이용합니다.
